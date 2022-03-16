@@ -55,6 +55,7 @@ ul {
     width: 1170px;
     }
 }
+/* End Global Rules */
 /* Start NavBar */
 nav {
     background-color: white;
@@ -219,24 +220,25 @@ header {
 }
 header::before {
     content: '';
-    height: calc(100vh - 120px);
+    height: 100%;
     background-color: var(--section-background);
     width: 100%;
-    top: 0;
+    top: -40px;
     left: 0;
     position: absolute;
     transform: skewY(-6deg);
     transform-origin: top left;
     z-index: -1;
 }
-header .flxx {
+header .container .flxx {
     display: flex;
     justify-content: space-between;
+    min-height: calc(100vh - 80px);
+    padding-bottom: 120px;
     align-items: center;
 }
 header .flxx .text {
-    width: 49%;
-    margin-top: 150px;
+    width: 45%;
 }
 header .flxx .text h2 {
     font-size: 40px;
@@ -252,16 +254,22 @@ header .flxx .text p {
 }
 header .flxx img {
     position: relative;
-    width: 49%;
-    margin-top: 150px;
+    width: 54%;
     animation: up-and-down 5s linear infinite;
+}
+header i {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    color: var(--main-color);
+    --animate-duration: 5s;
+    cursor: pointer;
 }
 /* Start Media Query For Header */
 @media (max-width: 991px) {
     header .flxx .text {
         width: 100%;
         text-align: center;
-        margin-top: 200px;
     }
     header .flxx .text p {
         margin: 5px auto;
@@ -271,9 +279,6 @@ header .flxx img {
     }
 }
 @media (max-width: 767px) {
-    header .flxx .text {
-        margin-top: 240px;
-    }
     header .flxx .text h2 {
         font-size: 28px;
     }
@@ -284,6 +289,88 @@ header .flxx img {
 
 /* End Media Query For Header */
 /* End Header */
+/* Start Articles */
+.articles {
+    padding-top: var(--main-padding-top);
+    padding-bottom: var(--main-padding-bottom);
+}
+.articles h2 {
+    position: relative;
+    text-transform: uppercase;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 30px;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    margin: 0 auto;
+    transition: all 0.8s ease-in 0.3s;
+}
+.articles h2:hover {
+    color: white;
+    border: none;
+}
+.articles h2::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--main-color);
+    width: 13px;
+    height: 13px;
+    border-radius: 20px;
+    transition: all 0.8s ease-in;
+}
+.articles h2::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--main-color);
+    width: 13px;
+    height: 13px;
+    border-radius: 20px;
+    transition: all 0.8s ease-in;
+}
+.articles h2:hover::before {
+    left: 0px;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    
+}
+.articles h2:hover::after {
+    right: 0px;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+}
+/* End Articles */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Start Animation */
 @keyframes up-and-down {
     0%,
