@@ -286,7 +286,6 @@ header i {
         font-size: 18px;
     }
 }
-
 /* End Media Query For Header */
 /* End Header */
 /* Start Articles */
@@ -302,12 +301,14 @@ header i {
     font-size: 30px;
     border: 2px solid #000;
     padding: 10px 20px;
-    margin: 0 auto;
-    transition: all 0.8s ease-in 0.3s;
+    margin: 0 auto 80px;
+    transition: var(--main-transition);
+    
 }
 .articles h2:hover {
+    transition-delay: 0.4s;
     color: white;
-    border: none;
+    border: 2px solid var(--main-color);
 }
 .articles h2::before {
     content: '';
@@ -319,7 +320,8 @@ header i {
     width: 13px;
     height: 13px;
     border-radius: 20px;
-    transition: all 0.8s ease-in;
+    transition: var(--main-transition);
+    z-index: -1;
 }
 .articles h2::after {
     content: '';
@@ -331,24 +333,198 @@ header i {
     width: 13px;
     height: 13px;
     border-radius: 20px;
-    transition: all 0.8s ease-in;
+    transition: var(--main-transition);
+    z-index: -1;
 }
 .articles h2:hover::before {
-    left: 0px;
-    border-radius: 0;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
-    
+    animation: left-move 0.5s linear forwards;
 }
 .articles h2:hover::after {
-    right: 0px;
-    border-radius: 0;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
+    animation: right-move 0.5s linear forwards;
 }
+.articles .up {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    grid-template-areas:
+    "riven riven riven leblanc leblanc leblanc ahri ahri ahri zed zed zed"
+    "urgot urgot urgot fizz fizz fizz rell rell rell vayne vayne vayne"
+}
+.articles .up .riven {
+    grid-area: riven;
+}
+.articles .up .leblanc {
+    grid-area: leblanc;
+}
+.articles .up .ahri {
+    grid-area: ahri;
+}
+.articles .up .zed {
+    grid-area: zed;
+}
+.articles .up .urgot {
+    grid-area: urgot;
+}
+.articles .up .fizz {
+    grid-area: fizz;
+}
+.articles .up .rell {
+    grid-area: rell;
+}
+.articles .up .vayne {
+    grid-area: vayne;
+}
+.articles .up .riven,
+.articles .up .leblanc,
+.articles .up .ahri,
+.articles .up .zed,
+.articles .up .urgot,
+.articles .up .fizz,
+.articles .up .rell,
+.articles .up .vayne {
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    position: relative;
+    border-radius: 7px;
+    transition: var(--main-transition);
+    overflow: hidden;
+}
+.articles .up .riven::after,
+.articles .up .leblanc::after,
+.articles .up .ahri::after,
+.articles .up .zed::after,
+.articles .up .urgot::after,
+.articles .up .fizz::after,
+.articles .up .rell::after,
+.articles .up .vayne::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #e6e6e7;
+    position: absolute;
+    bottom: 66px;
+}
+.articles .up .riven img,
+.articles .up .leblanc img,
+.articles .up .ahri img,
+.articles .up .zed img,
+.articles .up .urgot img,
+.articles .up .fizz img,
+.articles .up .rell img,
+.articles .up .vayne img {
+    width: 100%;
+}
+.articles .up .riven h3,
+.articles .up .leblanc h3,
+.articles .up .ahri h3,
+.articles .up .zed h3,
+.articles .up .urgot h3,
+.articles .up .fizz h3,
+.articles .up .rell h3,
+.articles .up .vayne h3 {
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+.articles .up .riven p,
+.articles .up .leblanc p,
+.articles .up .ahri p,
+.articles .up .zed p,
+.articles .up .urgot p,
+.articles .up .fizz p,
+.articles .up .rell p,
+.articles .up .vayne p {
+    margin: 10px 0 0 15px;
+    line-height: 1.5;
+    color: #777;
+}
+.articles .up .riven div,
+.articles .up .leblanc div,
+.articles .up .ahri div,
+.articles .up .zed div,
+.articles .up .urgot div,
+.articles .up .fizz div,
+.articles .up .rell div,
+.articles .up .vayne div {
+    margin-left: 15px;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--main-color);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.articles .up .riven div i,
+.articles .up .leblanc div i,
+.articles .up .ahri div i,
+.articles .up .zed div i,
+.articles .up .urgot div i,
+.articles .up .fizz div i,
+.articles .up .rell div i,
+.articles .up .vayne div i {
+    float: right;
+    margin-right: 21px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+.articles .up .riven:hover,
+.articles .up .leblanc:hover,
+.articles .up .ahri:hover,
+.articles .up .zed:hover,
+.articles .up .urgot:hover,
+.articles .up .fizz:hover,
+.articles .up .rell:hover,
+.articles .up .vayne:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+}
+.articles .up .riven:hover i,
+.articles .up .leblanc:hover i,
+.articles .up .ahri:hover i,
+.articles .up .zed:hover i,
+.articles .up .urgot:hover i,
+.articles .up .fizz:hover i,
+.articles .up .rell:hover i,
+.articles .up .vayne:hover i {
+    animation: moving-arrow 0.7s linear infinite;
+}
+/* Start Media Query For Articles */
+@media (max-width: 1200px) {
+    .articles .up {
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-areas:
+            "riven riven riven leblanc leblanc leblanc ahri ahri ahri"
+            "zed zed zed urgot urgot urgot fizz fizz fizz"
+            "rell rell rell vayne vayne vayne . . .";
+    }
+}
+@media (max-width: 991px) {
+    .articles .up {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas:
+            " riven riven riven leblanc leblanc leblanc"
+            "ahri ahri ahri zed zed zed"
+            "urgot urgot urgot fizz fizz fizz"
+            " rell rell rell vayne vayne vayne";
+    }
+}
+@media (max-width: 568px) {
+    .articles .up {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+            "riven "
+            "leblanc"
+            "ahri"
+            "zed"
+            "urgot"
+            "fizz"
+            "rell"
+            "vayne";
+    }
+}
+/* End Media Query For articles */
 /* End Articles */
+
+
+
 
 
 
@@ -381,4 +557,81 @@ header i {
     top: -50px;
     }
 }
+@keyframes right-move {
+    50% {
+    right: 0;
+    width: 12px;
+    height: 12px;
+    }
+    100% {
+    right: 0;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+    }
+}
+@keyframes left-move {
+    50% {
+    left: 0;
+    width: 12px;
+    height: 12px;
+}
+    100% {
+    left: 0;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+    }
+}
+@keyframes moving-arrow {
+    100% {
+    transform: translateX(10px);
+    }
+}
+  /* End Animation */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @keyframes flashing {
+    0%,
+    40% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      width: 200%;
+      height: 200%;
+    }
+  }
+  @keyframes change-background {
+    0%,
+    100% {
+      background-image: url("../imgs/discount-background1.jpg");
+    }
+    50% {
+      background-image: url("../imgs/discount-background2.jpg");
+    }
+  }
   /* End Animation */
